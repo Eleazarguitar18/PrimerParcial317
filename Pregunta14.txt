@@ -1,0 +1,17 @@
+La taxonomía de Flynn clasifica los sistemas informáticos paralelos según el número de instrucciones y de datos que pueden ser procesadas simultáneamente por múltiples unidades de procesamiento. Las categorías principales de la taxonomía de Flynn son:
+
+SISD (Single Instruction, Single Data): Un único flujo de instrucciones opera en un único flujo de datos. Es el modelo más común en las computadoras convencionales de un solo procesador.
+
+SIMD (Single Instruction, Multiple Data): Un único flujo de instrucciones opera en múltiples flujos de datos simultáneamente. Cada unidad de procesamiento ejecuta la misma instrucción en diferentes datos al mismo tiempo.
+
+MISD (Multiple Instruction, Single Data): Múltiples flujos de instrucciones operan en un único flujo de datos. Esta categoría es rara en la práctica y se utiliza principalmente en aplicaciones especializadas.
+
+MIMD (Multiple Instruction, Multiple Data): Múltiples flujos de instrucciones operan en múltiples flujos de datos. Es el modelo más generalizado y se utiliza en sistemas paralelos, donde múltiples procesadores ejecutan diferentes instrucciones en diferentes conjuntos de datos al mismo tiempo.
+
+Ahora, clasifiquemos OPENMP, MPI y Multiprocessing según la taxonomía de Flynn:
+
+OPENMP: OPENMP es una API (Interfaz de Programación de Aplicaciones) para la programación paralela en sistemas de memoria compartida. Se utiliza para crear programas paralelos en sistemas con múltiples núcleos de CPU o procesadores. OPENMP sigue la categoría MIMD de la taxonomía de Flynn, ya que permite que múltiples hilos de ejecución (instrucciones) operen en múltiples conjuntos de datos de forma simultánea en un entorno de memoria compartida.
+
+MPI (Message Passing Interface): MPI es una biblioteca para la programación de sistemas distribuidos y paralelos. Permite la comunicación entre procesos en sistemas con memoria distribuida. MPI sigue la categoría MIMD de la taxonomía de Flynn, ya que permite que múltiples procesos ejecuten diferentes instrucciones en diferentes conjuntos de datos simultáneamente en un entorno de memoria distribuida.
+
+Multiprocessing en Python: Multiprocessing en Python permite la creación de procesos múltiples para ejecutar tareas de forma concurrente en sistemas de un solo procesador o en sistemas con múltiples núcleos de CPU. Aunque Python es principalmente un lenguaje de programación de alto nivel, Multiprocessing se basa en las funcionalidades del sistema operativo subyacente para crear procesos. Dado que Multiprocessing en Python puede ejecutar múltiples procesos independientes, sigue la categoría MIMD de la taxonomía de Flynn.

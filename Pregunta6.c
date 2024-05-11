@@ -3,41 +3,39 @@
 #include <mpi.h>
 #include <time.h>
 
-#define TOTAL_POINTS 1000000000 // Número total de puntos
+#define NUM_SAMPLES 1000000
 
-int main(int argc, char *argv[]) {
-    int rank, size, i, count;
-    double x, y, z, pi, pi_local;
-    
+int main(int argc, char **argv) {
+    int rank, num_procs;
+    int points_inside_circle = 0;
+    double x, y;
+
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &size);
+    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
 
-    // Semilla aleatoria diferente para cada proceso
-    srand(time(NULL) + rank);
+    srand(time(NULL) + rank); // Seed the random number generator
 
-    count = 0;
-    for (i = 0; i < TOTAL_POINTS; i++) {
-        // Generar coordenadas aleatorias dentro del cuadrado
-        x = (double)rand() / RAND_MAX;
-        y = (double)rand() / RAND_MAX;
-        z = x * x + y * y;
+    // Distribute the workload among processes
+    int num_samples_per_process = NUM_SAMPLES / num_procs;
+    for (int i = 0; i < num_samples_per_process; i++) {
+        x = (double)rand() / RAND_MAX * 2 - 1;
+        y = (double)rand() / RAND_MAX * 2 - 1;
 
-        // Verificar si el punto está dentro del círculo
-        if (z <= 1) {
-            count++;
-        }
+        if (x * x + y * y <= 1)
+            points_inside_circle++;
     }
 
-    // Sumar todos los conteos locales
-    MPI_Reduce(&count, &pi_local, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+    // Gather results from all processes
+    int total_points_inside_circle;
+    MPI_Reduce(&points_inside_circle, &total_points_inside_circle, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
-    // Proceso 0 calcula el valor final de pi
     if (rank == 0) {
-        pi = 4.0 * pi_local / (TOTAL_POINTS * size);
-        printf("Estimación de PI: %f\n", pi);
+        double pi_estimate = 4.0 * total_points_inside_circle / NUM_SAMPLES;
+        printf("Estimated value of π (pi): %f\n", pi_estimate);
     }
 
     MPI_Finalize();
+
     return 0;
 }
