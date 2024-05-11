@@ -3,7 +3,7 @@
 #include <mpi.h>
 #include <time.h>
 
-#define TOTAL_POINTS 1000000000 // Número total de puntos
+#define TOTAL_POINTS 100000000 // Número total de puntos
 
 int main(int argc, char *argv[]) {
     int rank, size, i, count;
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     srand(time(NULL) + rank);
 
     count = 0;
-    for (i = 0; i < TOTAL_POINTS; i++) {
+    for (i = 0; i < TOTAL_POINTS / size; i++) {
         // Generar coordenadas aleatorias dentro del cuadrado
         x = (double)rand() / RAND_MAX;
         y = (double)rand() / RAND_MAX;
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     // Proceso 0 calcula el valor final de pi
     if (rank == 0) {
-        pi = 4.0 * pi_local / (TOTAL_POINTS * size);
+        pi = 4.0 * pi_local / TOTAL_POINTS;
         printf("Estimación de PI: %f\n", pi);
     }
 
