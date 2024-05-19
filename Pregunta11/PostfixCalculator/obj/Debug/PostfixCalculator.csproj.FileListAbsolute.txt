@@ -1,0 +1,11 @@
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\bin\Debug\PostfixCalculator.exe.config
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\bin\Debug\PostfixCalculator.exe
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\bin\Debug\PostfixCalculator.pdb
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.csproj.AssemblyReference.cache
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.Form1.resources
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.Properties.Resources.resources
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.csproj.GenerateResource.cache
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.csproj.CoreCompileInputs.cache
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.exe
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.pdb
+C:\Users\ELEAZAR\source\repos\PostfixCalculator\PostfixCalculator\obj\Debug\PostfixCalculator.Form2.resources
